@@ -65,7 +65,7 @@ describe('some test', function () {
 
 ## Testing
 
-This module is test in Node versions:
+This module is tested in Node versions:
 
 * 0.10.x
 * 0.12.x
