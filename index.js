@@ -1,30 +1,26 @@
 'use strict'
 
+var path = require('path')
 var parent = module.parent
 
 // Remove require-again from cache so the parent context
 // is recreated in every module that requires it
 delete require.cache[module.id]
 
-function requireAgain (path) {
-  var sanitizedPath = removeDotsAndSlashes(path)
-  var requiredModules = Object.keys(require.cache)
-  var matches = requiredModules.filter(function (key) {
-    var sanitizedKey = removeDotsAndSlashes(key)
-    if (sanitizedKey.indexOf(sanitizedPath) > -1) {
-      return key
-    }
-  })
+function requireAgain (file) {
+  var absolutePath = getFullFileName(file)
+  var requiredName = require.resolve(absolutePath)
 
-  matches.forEach(function (match) {
-    delete require.cache[match]
-  })
+  delete require.cache[requiredName]
 
-  return parent.require(path)
+  return parent.require(file)
 }
 
-function removeDotsAndSlashes (string) {
-  return string.replace(/[.\/]/g, '')
+function getFullFileName (file) {
+  var directory = path.dirname(parent.filename)
+  var absolutePath = path.join(directory, file)
+
+  return absolutePath
 }
 
 module.exports = requireAgain
