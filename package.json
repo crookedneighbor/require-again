@@ -1,0 +1,46 @@
+{
+  "name": "require-again",
+  "version": "1.0.0",
+  "description": "A simple module that makes ignoring the node require cache easy.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard | snazzy",
+    "test": "npm run lint && mocha test/index.js test/nested-test/another-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crookedneighbor/require-again.git"
+  },
+  "keywords": [
+    "test",
+    "require",
+    "cache"
+  ],
+  "author": "Blade Barringer <blade@crookedneighbor.com> (http://crookedneighbor.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crookedneighbor/require-again/issues"
+  },
+  "homepage": "https://github.com/crookedneighbor/require-again#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "snazzy": "^4.0.0",
+    "standard": "^7.0.1"
+  },
+  "standard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "context",
+      "describe",
+      "expect",
+      "it",
+      "xcontext",
+      "xdescribe",
+      "xit"
+    ]
+  }
+}
