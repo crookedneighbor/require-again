@@ -1,6 +1,6 @@
 {
   "name": "require-again",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple module that makes ignoring the node require cache easy.",
   "main": "index.js",
   "scripts": {
