@@ -17,25 +17,27 @@ if (isProd) {
 module.exports = myModule
 ```
 
-When you require this module in your test files, it'll run the `isProd` check once and then cache that version of the module. This makes it difficult to test both behaviors. `require-again` deletes the module from Node's require cache and returns the re-required module.
+When you require this module in your test files, it'll run the `isProd` check once and then cache that version of the module. This makes it difficult to test both behaviors. `require-again` allows you to get a freshly required version of the module.
 
 ## Usage
 
+Example using [Mocha](https://mochajs.org/)
+
 ```js
 var requireAgain = require('require-again')
+var pathToModule = './path/to/module'
 
 describe('some test', function () {
   context('prod behavior', function () {
-    var myModule, oldEnv
-
     before(function () {
-      oldEnv = process.env.NODE_ENV
+      this.oldEnv = process.env.NODE_ENV
       process.env.NODE_ENV = 'production'
-      myModule = requireAgain('./path/to/module')
+
+      this.module = requireAgain(pathToModule)
     })
 
     after(function () {
-      process.env.NODE_ENV = oldEnv
+      process.env.NODE_ENV = this.oldEnv
     })
 
     it('does something in a production environment', function () {
@@ -44,16 +46,15 @@ describe('some test', function () {
   })
 
   context('non-prod behavior', function () {
-    var myModule, oldEnv
-
     before(function () {
-      oldEnv = process.env.NODE_ENV
+      this.oldEnv = process.env.NODE_ENV
       process.env.NODE_ENV = 'dev'
-      myModule = requireAgain('./path/to/module')
+
+      this.module = requireAgain(pathToModule)
     })
 
     after(function () {
-      process.env.NODE_ENV = oldEnv
+      process.env.NODE_ENV = this.oldEnv
     })
 
     it('does something in a development environment', function () {
