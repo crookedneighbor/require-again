@@ -8,12 +8,18 @@ var parent = module.parent
 delete require.cache[module.id]
 
 function requireAgain (file) {
+  var freshModule
   var absolutePath = getFullFileName(file)
   var requiredName = require.resolve(absolutePath)
+  var cachedModule = require.cache[requiredName]
 
   delete require.cache[requiredName]
 
-  return parent.require(file)
+  freshModule = parent.require(file)
+
+  require.cache[requiredName] = cachedModule
+
+  return freshModule
 }
 
 function getFullFileName (file) {

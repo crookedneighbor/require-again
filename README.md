@@ -19,6 +19,8 @@ module.exports = myModule
 
 When you require this module in your test files, it'll run the `isProd` check once and then cache that version of the module. This makes it difficult to test both behaviors. `require-again` allows you to get a freshly required version of the module.
 
+Requiring the module normally after using requireAgain will return the original cached version of the module.
+
 ## Usage
 
 Example using [Mocha](https://mochajs.org/)

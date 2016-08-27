@@ -4,6 +4,10 @@ var requireAgain = require('../')
 var expect = require('chai').expect
 
 describe('require-again', function () {
+  afterEach(function () {
+    delete process.env.FAKE_MODULE_SETTING
+  })
+
   it('allows you to re-run module operations that happen on load', function () {
     var fake = require('./support/fake-module')
 
@@ -20,8 +24,6 @@ describe('require-again', function () {
     fake = requireAgain('./support/fake-module')
 
     expect(fake.setting).to.eql('not default')
-
-    delete process.env.FAKE_MODULE_SETTING
   })
 
   it('does not error if module has not been required before', function () {
@@ -36,5 +38,21 @@ describe('require-again', function () {
     expect(function () {
       requireAgain('./support/fake-module')
     }).to.not.throw()
+  })
+
+  it('retains the old version when a module is required normally', function () {
+    var fake = require('./support/fake-module')
+
+    process.env.FAKE_MODULE_SETTING = 'not default'
+
+    expect(fake.setting).to.eql('default')
+
+    fake = requireAgain('./support/fake-module')
+
+    expect(fake.setting).to.eql('not default')
+
+    fake = require('./support/fake-module')
+
+    expect(fake.setting).to.eql('default')
   })
 })
