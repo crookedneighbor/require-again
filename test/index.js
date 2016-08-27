@@ -55,4 +55,10 @@ describe('require-again', function () {
 
     expect(fake.setting).to.eql('default')
   })
+
+  it('lets require throw an error when path does not exist', function () {
+    expect(function () {
+      requireAgain('./support/no-module')
+    }).to.throw()
+  })
 })
