@@ -70,3 +70,7 @@ This module is tested in Node versions:
 * 4.x.x
 * 5.x.x
 * 6.x.x
+
+## Changelog
+
+See [releases](https://github.com/crookedneighbor/require-again/releases) for a detailed changelog.
