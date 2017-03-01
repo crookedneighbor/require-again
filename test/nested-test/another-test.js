@@ -24,4 +24,3 @@ describe('require-again', function () {
     delete process.env.FAKE_MODULE_SETTING
   })
 })
-
