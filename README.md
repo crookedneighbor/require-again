@@ -1,4 +1,6 @@
 # require-again
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/crookedneighbor/require-again.svg)](https://greenkeeper.io/)
 A simple module that makes ignoring the node require cache easy.
 
 ## Why?
