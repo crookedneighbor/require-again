@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/crookedneighbor/require-again#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.0",
     "mocha": "^3.0.0",
     "snazzy": "^6.0.0",
     "standard": "^10.0.0"
