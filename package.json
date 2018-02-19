@@ -26,7 +26,7 @@
     "chai": "^4.1.0",
     "mocha": "^4.1.0",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.0"
+    "standard": "^11.0.0"
   },
   "standard": {
     "globals": [
