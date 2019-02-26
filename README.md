@@ -73,8 +73,9 @@ describe('some test', function () {
 
 This module is tested in Node versions:
 
-* 4.x.x
 * 6.x.x
+* 8.x.x
+* 10.x.x
 
 ## Changelog
 
